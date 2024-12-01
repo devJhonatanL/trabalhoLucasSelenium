@@ -7,12 +7,13 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-//Adicione o tipo de driver. No nosso caso, chrome driver
-//Adicione o caminho em que esta o ChromeDriver
+
+        //caminho
         System.setProperty("webdriver.chrome.driver","C:\\Users\\Jhonatan\\Desktop\\chromedriver-win64\\chromedriver.exe");
         ChromeOptions ops = new ChromeOptions();
         ops.addArguments("--remote-allow-origins=*");
         WebDriver driver = new ChromeDriver(ops);
+        //link
         driver.get("https://www.saucedemo.com/");
 
         Thread.sleep(2000);
