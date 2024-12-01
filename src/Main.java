@@ -3,6 +3,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.WheelInput;
 
 
 public class Main {
@@ -35,6 +37,19 @@ public class Main {
         Thread.sleep(3000);
 
 
+        //Rola a tela pra baixo
+        WheelInput.ScrollOrigin scrollOrigin = WheelInput.ScrollOrigin.fromViewport(10, 10);
+        new Actions(driver)
+                .scrollFromOrigin(scrollOrigin, 0, 200)
+                .perform();
+        Thread.sleep(2000);
+
+        new Actions(driver)
+                .scrollFromOrigin(scrollOrigin, 200, 800)
+                .perform();
+        Thread.sleep(2000);
+
+
         //Acessando uma aba do produto, add no carrinho e voltando pra home
         driver.findElement(By.linkText("Sauce Labs Onesie")).click();
         Thread.sleep(2000);
@@ -46,6 +61,12 @@ public class Main {
         WebElement back1 = driver.findElement(By.id("back-to-products"));
         back1.click();
 
+        Thread.sleep(2000);
+
+        //Rola novamente
+        new Actions(driver)
+                .scrollFromOrigin(scrollOrigin, 0, 400)
+                .perform();
         Thread.sleep(2000);
 
         driver.findElement(By.linkText("Sauce Labs Fleece Jacket")).click();
@@ -86,13 +107,20 @@ public class Main {
         Thread.sleep(3000);
 
         WebElement cep = driver.findElement(By.id("postal-code"));
-        cep.sendKeys("76382685");
+        cep.sendKeys("7000000");
         Thread.sleep(3000);
 
 
         WebElement continuar = driver.findElement(By.id("continue"));
         continuar.click();
         Thread.sleep(3000);
+
+        //Rola novamente
+        new Actions(driver)
+                .scrollFromOrigin(scrollOrigin, 0, 300)
+                .perform();
+        Thread.sleep(2000);
+
 
         WebElement finalizar = driver.findElement(By.id("finish"));
         finalizar.click();
